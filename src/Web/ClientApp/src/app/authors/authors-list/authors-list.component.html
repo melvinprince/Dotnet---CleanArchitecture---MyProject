@@ -1,0 +1,32 @@
+<div class="container py-4">
+  <h2>All Authors</h2>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border" role="status"></div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <table *ngIf="!loading && !error" class="table table-striped">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Biography</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of authors">
+        <td>{{ a.firstName }}</td>
+        <td>{{ a.lastName }}</td>
+        <td>
+          {{ a.dateOfBirth ? (a.dateOfBirth | date : "mediumDate") : "—" }}
+        </td>
+        <td>{{ a.biography || "—" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,32 @@
+<div class="container py-4">
+  <h2>All Books</h2>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border" role="status"></div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <table *ngIf="!loading && !error" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>ISBN</th>
+        <th>Published</th>
+        <th>Status</th>
+        <th>Borrower</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of books">
+        <td>{{ b.title }}</td>
+        <td>{{ b.isbn }}</td>
+        <td>{{ b.publishedDate | date : "mediumDate" }}</td>
+        <td>{{ b.status }}</td>
+        <td>{{ b.borrowerId || "—" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,31 @@
+<!-- src/app/borrowers/borrowers-list.component.html -->
+<div class="container py-4">
+  <h2>All Borrowers</h2>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border" role="status"></div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <table *ngIf="!loading && !error" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Registered</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of borrowers">
+        <td>{{ b.fullName }}</td>
+        <td>{{ b.email }}</td>
+        <td>{{ b.phoneNumber || "—" }}</td>
+        <td>{{ b.dateRegistered | date : "mediumDate" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
