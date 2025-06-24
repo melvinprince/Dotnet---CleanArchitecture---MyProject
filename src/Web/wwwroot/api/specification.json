@@ -477,13 +477,34 @@
       }
     },
     "/api/Books": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "GetBooks",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BookDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Books"
         ],
         "operationId": "AddBook",
         "requestBody": {
-          "x-name": "command",
+          "x-name": "cmd",
           "content": {
             "application/json": {
               "schema": {
@@ -509,6 +530,99 @@
         }
       }
     },
+    "/api/Books/{id}": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "GetBookById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "UpdateBook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "cmd",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBookCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "400": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "DeleteBook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/Books/borrow": {
       "post": {
         "tags": [
@@ -516,7 +630,7 @@
         ],
         "operationId": "BorrowBook",
         "requestBody": {
-          "x-name": "command",
+          "x-name": "cmd",
           "content": {
             "application/json": {
               "schema": {
@@ -994,6 +1108,45 @@
           }
         }
       },
+      "BookDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "title": {
+            "type": "string"
+          },
+          "isbn": {
+            "type": "string"
+          },
+          "publishedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "authorId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/BookStatus"
+          }
+        }
+      },
+      "BookStatus": {
+        "type": "integer",
+        "description": "",
+        "x-enumNames": [
+          "Available",
+          "Borrowed"
+        ],
+        "enum": [
+          0,
+          1
+        ]
+      },
       "AddBookCommand": {
         "type": "object",
         "additionalProperties": false,
@@ -1023,6 +1176,30 @@
             "format": "guid"
           },
           "borrowerId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "UpdateBookCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "title": {
+            "type": "string"
+          },
+          "isbn": {
+            "type": "string"
+          },
+          "publishedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "authorId": {
             "type": "string",
             "format": "guid"
           }
