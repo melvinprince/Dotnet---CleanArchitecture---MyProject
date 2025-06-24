@@ -1,8 +1,9 @@
+// File: src/Application/Authors/Commands/AddAuthor/AddAuthorCommandValidator.cs
 using FluentValidation;
 
 namespace Application.Authors.Commands.AddAuthor
 {
-    public class AddAuthorCommandValidator 
+    public class AddAuthorCommandValidator
         : AbstractValidator<AddAuthorCommand>
     {
         public AddAuthorCommandValidator()
@@ -15,9 +16,12 @@ namespace Application.Authors.Commands.AddAuthor
                 .NotEmpty().WithMessage("Last name is required.")
                 .MaximumLength(100);
 
+            RuleFor(x => x.DateOfBirth)
+                .LessThanOrEqualTo(DateTime.UtcNow)
+                .WithMessage("Date of birth cannot be in the future.");
+
             RuleFor(x => x.Biography)
-                .MaximumLength(1000)
-                .When(x => x.Biography is not null);
+                .MaximumLength(1000);
         }
     }
 }
