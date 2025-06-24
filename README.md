@@ -69,3 +69,14 @@ dotnet test
 
 ## Help
 To learn more about the template go to the [project website](https://github.com/jasontaylordev/CleanArchitecture). Here you can find additional guidance, request new features, report a bug, and discuss the template with other users.
+
+## Extending the Solution
+
+This repository includes the basic Domain, Application, Infrastructure and Web layers ready for customization.
+
+- **Domain** holds your core entities and value objects.
+- **Application** contains use cases and interfaces.
+- **Infrastructure** implements persistence and external services.
+- **Web** exposes HTTP endpoints.
+
+Add new entities, commands and endpoints as your application grows.
