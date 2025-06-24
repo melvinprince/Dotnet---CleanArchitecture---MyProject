@@ -604,6 +604,289 @@ export class WeatherForecastsClient implements IWeatherForecastsClient {
     }
 }
 
+export interface IBorrowersClient {
+    getBorrowers(): Observable<BorrowerDto[]>;
+    addBorrower(cmd: AddBorrowerCommand): Observable<string>;
+    getBorrowerById(id: string): Observable<BorrowerDto>;
+    updateBorrower(id: string, cmd: UpdateBorrowerCommand): Observable<void>;
+    deleteBorrower(id: string): Observable<void>;
+}
+
+@Injectable({
+    providedIn: 'root'
+})
+export class BorrowersClient implements IBorrowersClient {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ?? "";
+    }
+
+    getBorrowers(): Observable<BorrowerDto[]> {
+        let url_ = this.baseUrl + "/api/Borrowers";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetBorrowers(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetBorrowers(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<BorrowerDto[]>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<BorrowerDto[]>;
+        }));
+    }
+
+    protected processGetBorrowers(response: HttpResponseBase): Observable<BorrowerDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(BorrowerDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    addBorrower(cmd: AddBorrowerCommand): Observable<string> {
+        let url_ = this.baseUrl + "/api/Borrowers";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(cmd);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processAddBorrower(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processAddBorrower(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<string>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<string>;
+        }));
+    }
+
+    protected processAddBorrower(response: HttpResponseBase): Observable<string> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 201) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result201: any = null;
+            let resultData201 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+                result201 = resultData201 !== undefined ? resultData201 : <any>null;
+    
+            return _observableOf(result201);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    getBorrowerById(id: string): Observable<BorrowerDto> {
+        let url_ = this.baseUrl + "/api/Borrowers/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetBorrowerById(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetBorrowerById(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<BorrowerDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<BorrowerDto>;
+        }));
+    }
+
+    protected processGetBorrowerById(response: HttpResponseBase): Observable<BorrowerDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = BorrowerDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    updateBorrower(id: string, cmd: UpdateBorrowerCommand): Observable<void> {
+        let url_ = this.baseUrl + "/api/Borrowers/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(cmd);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateBorrower(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateBorrower(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<void>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<void>;
+        }));
+    }
+
+    protected processUpdateBorrower(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return _observableOf(null as any);
+            }));
+        } else if (status === 400) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("A server side error occurred.", status, _responseText, _headers);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    deleteBorrower(id: string): Observable<void> {
+        let url_ = this.baseUrl + "/api/Borrowers/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteBorrower(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteBorrower(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<void>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<void>;
+        }));
+    }
+
+    protected processDeleteBorrower(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return _observableOf(null as any);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+}
+
 export interface IBooksClient {
     addBook(command: AddBookCommand): Observable<string>;
     borrowBook(command: BorrowBookCommand): Observable<void>;
@@ -1376,6 +1659,150 @@ export interface IWeatherForecast {
     temperatureC?: number;
     temperatureF?: number;
     summary?: string | undefined;
+}
+
+export class BorrowerDto implements IBorrowerDto {
+    id?: string;
+    fullName?: string;
+    email?: string;
+    phoneNumber?: string | undefined;
+    dateRegistered?: Date;
+
+    constructor(data?: IBorrowerDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.fullName = _data["fullName"];
+            this.email = _data["email"];
+            this.phoneNumber = _data["phoneNumber"];
+            this.dateRegistered = _data["dateRegistered"] ? new Date(_data["dateRegistered"].toString()) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): BorrowerDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new BorrowerDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["fullName"] = this.fullName;
+        data["email"] = this.email;
+        data["phoneNumber"] = this.phoneNumber;
+        data["dateRegistered"] = this.dateRegistered ? this.dateRegistered.toISOString() : <any>undefined;
+        return data;
+    }
+}
+
+export interface IBorrowerDto {
+    id?: string;
+    fullName?: string;
+    email?: string;
+    phoneNumber?: string | undefined;
+    dateRegistered?: Date;
+}
+
+export class AddBorrowerCommand implements IAddBorrowerCommand {
+    fullName?: string;
+    email?: string;
+    phoneNumber?: string | undefined;
+
+    constructor(data?: IAddBorrowerCommand) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.fullName = _data["fullName"];
+            this.email = _data["email"];
+            this.phoneNumber = _data["phoneNumber"];
+        }
+    }
+
+    static fromJS(data: any): AddBorrowerCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new AddBorrowerCommand();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["fullName"] = this.fullName;
+        data["email"] = this.email;
+        data["phoneNumber"] = this.phoneNumber;
+        return data;
+    }
+}
+
+export interface IAddBorrowerCommand {
+    fullName?: string;
+    email?: string;
+    phoneNumber?: string | undefined;
+}
+
+export class UpdateBorrowerCommand implements IUpdateBorrowerCommand {
+    id?: string;
+    fullName?: string;
+    email?: string;
+    phoneNumber?: string | undefined;
+
+    constructor(data?: IUpdateBorrowerCommand) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.fullName = _data["fullName"];
+            this.email = _data["email"];
+            this.phoneNumber = _data["phoneNumber"];
+        }
+    }
+
+    static fromJS(data: any): UpdateBorrowerCommand {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateBorrowerCommand();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["fullName"] = this.fullName;
+        data["email"] = this.email;
+        data["phoneNumber"] = this.phoneNumber;
+        return data;
+    }
+}
+
+export interface IUpdateBorrowerCommand {
+    id?: string;
+    fullName?: string;
+    email?: string;
+    phoneNumber?: string | undefined;
 }
 
 export class AddBookCommand implements IAddBookCommand {

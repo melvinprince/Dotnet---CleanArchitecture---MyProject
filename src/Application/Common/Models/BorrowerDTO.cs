@@ -1,5 +1,5 @@
 // File: src/Application/Common/Models/BorrowerDto.cs
-namespace MyProject.Application.Common.Models
+namespace Application.Common.Models
 {
     public record BorrowerDto(
         Guid   Id,

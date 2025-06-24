@@ -329,6 +329,153 @@
         }
       }
     },
+    "/api/Borrowers": {
+      "get": {
+        "tags": [
+          "Borrowers"
+        ],
+        "operationId": "GetBorrowers",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BorrowerDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Borrowers"
+        ],
+        "operationId": "AddBorrower",
+        "requestBody": {
+          "x-name": "cmd",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddBorrowerCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Borrowers/{id}": {
+      "get": {
+        "tags": [
+          "Borrowers"
+        ],
+        "operationId": "GetBorrowerById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BorrowerDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Borrowers"
+        ],
+        "operationId": "UpdateBorrower",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "cmd",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBorrowerCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "400": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Borrowers"
+        ],
+        "operationId": "DeleteBorrower",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/Books": {
       "post": {
         "tags": [
@@ -668,6 +815,66 @@
             "format": "int32"
           },
           "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "BorrowerDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateRegistered": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AddBorrowerCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateBorrowerCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phoneNumber": {
             "type": "string",
             "nullable": true
           }
