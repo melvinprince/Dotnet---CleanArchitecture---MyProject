@@ -1,6 +1,6 @@
-﻿using MyProject.Application.Common.Interfaces;
-using MyProject.Domain.Entities;
-using MyProject.Domain.Events;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
+using Domain.Events;
 
 namespace MyProject.Application.TodoItems.Commands.CreateTodoItem;
 

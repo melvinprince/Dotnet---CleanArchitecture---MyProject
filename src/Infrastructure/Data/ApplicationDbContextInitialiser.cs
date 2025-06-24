@@ -1,13 +1,13 @@
-﻿using MyProject.Domain.Constants;
-using MyProject.Domain.Entities;
-using MyProject.Infrastructure.Identity;
+﻿using Domain.Constants;
+using Domain.Entities;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace MyProject.Infrastructure.Data;
+namespace Infrastructure.Data;
 
 public static class InitialiserExtensions
 {

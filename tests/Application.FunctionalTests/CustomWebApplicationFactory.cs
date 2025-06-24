@@ -1,6 +1,6 @@
 ﻿using System.Data.Common;
-using MyProject.Application.Common.Interfaces;
-using MyProject.Infrastructure.Data;
+using Application.Common.Interfaces;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;

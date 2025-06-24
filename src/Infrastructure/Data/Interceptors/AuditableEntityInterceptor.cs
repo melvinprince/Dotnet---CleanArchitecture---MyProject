@@ -1,10 +1,10 @@
-﻿using MyProject.Application.Common.Interfaces;
-using MyProject.Domain.Common;
+﻿using Application.Common.Interfaces;
+using Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace MyProject.Infrastructure.Data.Interceptors;
+namespace Infrastructure.Data.Interceptors;
 
 public class AuditableEntityInterceptor : SaveChangesInterceptor
 {

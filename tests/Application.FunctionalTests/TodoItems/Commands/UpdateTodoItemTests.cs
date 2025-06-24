@@ -1,7 +1,7 @@
 ﻿using MyProject.Application.TodoItems.Commands.CreateTodoItem;
 using MyProject.Application.TodoItems.Commands.UpdateTodoItem;
 using MyProject.Application.TodoLists.Commands.CreateTodoList;
-using MyProject.Domain.Entities;
+using Domain.Entities;
 
 namespace MyProject.Application.FunctionalTests.TodoItems.Commands;
 

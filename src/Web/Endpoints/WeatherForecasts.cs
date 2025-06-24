@@ -1,7 +1,7 @@
 ﻿using MyProject.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace MyProject.Web.Endpoints;
+namespace Web.Endpoints;
 
 public class WeatherForecasts : EndpointGroupBase
 {

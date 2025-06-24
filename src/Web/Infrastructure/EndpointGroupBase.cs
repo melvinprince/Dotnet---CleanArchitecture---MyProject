@@ -1,4 +1,4 @@
-﻿namespace MyProject.Web.Infrastructure;
+﻿namespace Web.Infrastructure;
 
 public abstract class EndpointGroupBase
 {

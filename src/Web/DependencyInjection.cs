@@ -1,7 +1,7 @@
 ﻿using Azure.Identity;
-using MyProject.Application.Common.Interfaces;
-using MyProject.Infrastructure.Data;
-using MyProject.Web.Services;
+using Application.Common.Interfaces;
+using Infrastructure.Data;
+using Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
 

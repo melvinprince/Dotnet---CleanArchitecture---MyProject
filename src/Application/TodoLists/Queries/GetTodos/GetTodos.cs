@@ -1,7 +1,7 @@
-﻿using MyProject.Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 using MyProject.Application.Common.Models;
 using MyProject.Application.Common.Security;
-using MyProject.Domain.Enums;
+using Domain.Enums;
 
 namespace MyProject.Application.TodoLists.Queries.GetTodos;
 

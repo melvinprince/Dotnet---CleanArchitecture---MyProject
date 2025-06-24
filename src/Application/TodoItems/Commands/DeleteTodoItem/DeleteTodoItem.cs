@@ -1,5 +1,5 @@
-﻿using MyProject.Application.Common.Interfaces;
-using MyProject.Domain.Events;
+﻿using Application.Common.Interfaces;
+using Domain.Events;
 
 namespace MyProject.Application.TodoItems.Commands.DeleteTodoItem;
 

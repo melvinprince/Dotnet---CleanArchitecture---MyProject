@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using MyProject.Application.Common.Exceptions;
-using MyProject.Application.Common.Interfaces;
+using Application.Common.Interfaces;
 using MyProject.Application.Common.Security;
 
 namespace MyProject.Application.Common.Behaviours;

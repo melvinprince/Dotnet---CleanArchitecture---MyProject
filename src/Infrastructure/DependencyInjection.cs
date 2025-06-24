@@ -1,8 +1,8 @@
-﻿using MyProject.Application.Common.Interfaces;
-using MyProject.Domain.Constants;
-using MyProject.Infrastructure.Data;
-using MyProject.Infrastructure.Data.Interceptors;
-using MyProject.Infrastructure.Identity;
+﻿using Application.Common.Interfaces;
+using Domain.Constants;
+using Infrastructure.Data;
+using Infrastructure.Data.Interceptors;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;

@@ -1,9 +1,9 @@
-﻿using MyProject.Domain.Exceptions;
-using MyProject.Domain.ValueObjects;
+﻿using Domain.Exceptions;
+using Domain.ValueObjects;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace MyProject.Domain.UnitTests.ValueObjects;
+namespace Domain.UnitTests.ValueObjects;
 
 public class ColourTests
 {

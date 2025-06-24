@@ -1,5 +1,5 @@
 ﻿using MyProject.Application.Common.Behaviours;
-using MyProject.Application.Common.Interfaces;
+using Application.Common.Interfaces;
 using MyProject.Application.TodoItems.Commands.CreateTodoItem;
 using Microsoft.Extensions.Logging;
 using Moq;

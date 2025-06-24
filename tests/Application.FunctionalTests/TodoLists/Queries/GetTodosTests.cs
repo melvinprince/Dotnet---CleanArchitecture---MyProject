@@ -1,6 +1,6 @@
 ﻿using MyProject.Application.TodoLists.Queries.GetTodos;
-using MyProject.Domain.Entities;
-using MyProject.Domain.ValueObjects;
+using Domain.Entities;
+using Domain.ValueObjects;
 
 namespace MyProject.Application.FunctionalTests.TodoLists.Queries;
 

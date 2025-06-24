@@ -1,4 +1,4 @@
-﻿using MyProject.Domain.Entities;
+﻿using Domain.Entities;
 
 namespace MyProject.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 

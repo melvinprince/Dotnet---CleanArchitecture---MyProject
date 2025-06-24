@@ -1,6 +1,6 @@
-﻿global using MyProject.Domain.Common;
-global using MyProject.Domain.Entities;
-global using MyProject.Domain.Enums;
-global using MyProject.Domain.Events;
-global using MyProject.Domain.Exceptions;
-global using MyProject.Domain.ValueObjects;
+﻿global using Domain.Common;
+global using Domain.Entities;
+global using Domain.Enums;
+global using Domain.Events;
+global using Domain.Exceptions;
+global using Domain.ValueObjects;

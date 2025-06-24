@@ -1,6 +1,6 @@
 ﻿using MyProject.Application.TodoLists.Commands.CreateTodoList;
 using MyProject.Application.TodoLists.Commands.DeleteTodoList;
-using MyProject.Domain.Entities;
+using Domain.Entities;
 
 namespace MyProject.Application.FunctionalTests.TodoLists.Commands;
 

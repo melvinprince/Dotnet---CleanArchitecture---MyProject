@@ -1,4 +1,4 @@
-﻿using MyProject.Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 using MyProject.Application.Common.Mappings;
 using MyProject.Application.Common.Models;
 

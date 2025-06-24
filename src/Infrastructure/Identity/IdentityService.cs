@@ -1,10 +1,10 @@
-using MyProject.Application.Common.Interfaces;
+using Application.Common.Interfaces;
 using MyProject.Application.Common.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace MyProject.Infrastructure.Identity;
+namespace Infrastructure.Identity;
 
 public class IdentityService : IIdentityService
 {

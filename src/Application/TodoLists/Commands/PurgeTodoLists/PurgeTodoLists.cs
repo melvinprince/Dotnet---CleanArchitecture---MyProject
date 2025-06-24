@@ -1,6 +1,6 @@
-﻿using MyProject.Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 using MyProject.Application.Common.Security;
-using MyProject.Domain.Constants;
+using Domain.Constants;
 
 namespace MyProject.Application.TodoLists.Commands.PurgeTodoLists;
 

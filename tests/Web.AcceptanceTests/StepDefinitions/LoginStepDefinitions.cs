@@ -1,4 +1,4 @@
-namespace MyProject.Web.AcceptanceTests.StepDefinitions;
+namespace Web.AcceptanceTests.StepDefinitions;
 
 [Binding]
 public sealed class LoginStepDefinitions

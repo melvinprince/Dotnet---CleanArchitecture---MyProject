@@ -2,7 +2,7 @@
 using MyProject.Application.Common.Security;
 using MyProject.Application.TodoLists.Commands.CreateTodoList;
 using MyProject.Application.TodoLists.Commands.PurgeTodoLists;
-using MyProject.Domain.Entities;
+using Domain.Entities;
 
 namespace MyProject.Application.FunctionalTests.TodoLists.Commands;
 

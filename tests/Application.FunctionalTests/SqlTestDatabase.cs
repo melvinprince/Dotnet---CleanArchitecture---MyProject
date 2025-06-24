@@ -1,5 +1,5 @@
 ﻿using System.Data.Common;
-using MyProject.Infrastructure.Data;
+using Infrastructure.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;

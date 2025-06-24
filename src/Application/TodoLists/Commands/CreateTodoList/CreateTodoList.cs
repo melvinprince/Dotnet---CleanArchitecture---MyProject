@@ -1,5 +1,5 @@
-﻿using MyProject.Application.Common.Interfaces;
-using MyProject.Domain.Entities;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
 
 namespace MyProject.Application.TodoLists.Commands.CreateTodoList;
 

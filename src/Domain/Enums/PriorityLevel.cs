@@ -1,4 +1,4 @@
-﻿namespace MyProject.Domain.Enums;
+﻿namespace Domain.Enums;
 
 public enum PriorityLevel
 {

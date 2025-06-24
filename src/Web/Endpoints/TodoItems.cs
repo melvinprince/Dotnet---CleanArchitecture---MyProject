@@ -6,7 +6,7 @@ using MyProject.Application.TodoItems.Commands.UpdateTodoItemDetail;
 using MyProject.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace MyProject.Web.Endpoints;
+namespace Web.Endpoints;
 
 public class TodoItems : EndpointGroupBase
 {

@@ -1,4 +1,4 @@
-﻿namespace MyProject.Domain.ValueObjects;
+﻿namespace Domain.ValueObjects;
 
 public class Colour(string code) : ValueObject
 {

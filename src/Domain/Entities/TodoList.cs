@@ -1,4 +1,4 @@
-﻿namespace MyProject.Domain.Entities;
+﻿namespace Domain.Entities;
 
 public class TodoList : BaseAuditableEntity
 {

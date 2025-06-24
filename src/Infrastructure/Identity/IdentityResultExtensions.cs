@@ -1,7 +1,7 @@
 ﻿using MyProject.Application.Common.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace MyProject.Infrastructure.Identity;
+namespace Infrastructure.Identity;
 
 public static class IdentityResultExtensions
 {

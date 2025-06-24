@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <RootNamespace>MyProject.Infrastructure.IntegrationTests</RootNamespace>
-        <AssemblyName>MyProject.Infrastructure.IntegrationTests</AssemblyName>
+        <RootNamespace>Infrastructure.IntegrationTests</RootNamespace>
+        <AssemblyName>Infrastructure.IntegrationTests</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

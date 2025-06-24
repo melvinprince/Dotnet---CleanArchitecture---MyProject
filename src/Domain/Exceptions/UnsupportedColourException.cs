@@ -1,4 +1,4 @@
-﻿namespace MyProject.Domain.Exceptions;
+﻿namespace Domain.Exceptions;
 
 public class UnsupportedColourException : Exception
 {

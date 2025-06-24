@@ -1,4 +1,4 @@
-﻿using MyProject.Domain.Events;
+﻿using Domain.Events;
 using Microsoft.Extensions.Logging;
 
 namespace MyProject.Application.TodoItems.EventHandlers;

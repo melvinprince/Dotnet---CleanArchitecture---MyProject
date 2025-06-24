@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using AutoMapper;
-using MyProject.Application.Common.Interfaces;
+using Application.Common.Interfaces;
 using MyProject.Application.Common.Models;
 using MyProject.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 using MyProject.Application.TodoLists.Queries.GetTodos;
-using MyProject.Domain.Entities;
+using Domain.Entities;
 using NUnit.Framework;
 
 namespace MyProject.Application.UnitTests.Common.Mappings;

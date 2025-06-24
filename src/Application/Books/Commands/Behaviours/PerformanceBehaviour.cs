@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using MyProject.Application.Common.Interfaces;
+using Application.Common.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace MyProject.Application.Common.Behaviours;

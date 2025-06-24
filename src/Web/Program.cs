@@ -1,4 +1,6 @@
-using MyProject.Infrastructure.Data;
+using Microsoft.Extensions.DependencyInjection;
+using Infrastructure.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
 ﻿using MyProject.Application.Common.Models;
 
-namespace MyProject.Application.Common.Interfaces;
+namespace Application.Common.Interfaces;
 
 public interface IIdentityService
 {

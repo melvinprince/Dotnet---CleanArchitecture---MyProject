@@ -1,4 +1,4 @@
-﻿namespace MyProject.Domain.Events;
+﻿namespace Domain.Events;
 
 public class TodoItemCompletedEvent : BaseEvent
 {

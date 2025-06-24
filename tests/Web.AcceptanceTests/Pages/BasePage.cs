@@ -1,4 +1,4 @@
-﻿namespace MyProject.Web.AcceptanceTests.Pages;
+﻿namespace Web.AcceptanceTests.Pages;
 
 public abstract class BasePage
 {

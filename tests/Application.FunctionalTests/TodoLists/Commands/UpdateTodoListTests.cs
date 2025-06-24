@@ -1,7 +1,7 @@
 ﻿using MyProject.Application.Common.Exceptions;
 using MyProject.Application.TodoLists.Commands.CreateTodoList;
 using MyProject.Application.TodoLists.Commands.UpdateTodoList;
-using MyProject.Domain.Entities;
+using Domain.Entities;
 
 namespace MyProject.Application.FunctionalTests.TodoLists.Commands;
 

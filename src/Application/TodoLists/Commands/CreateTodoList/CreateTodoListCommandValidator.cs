@@ -1,4 +1,4 @@
-﻿using MyProject.Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 
 namespace MyProject.Application.TodoLists.Commands.CreateTodoList;
 

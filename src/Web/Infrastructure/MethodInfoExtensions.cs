@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace MyProject.Web.Infrastructure;
+namespace Web.Infrastructure;
 
 public static class MethodInfoExtensions
 {

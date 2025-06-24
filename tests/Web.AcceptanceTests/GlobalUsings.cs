@@ -1,4 +1,4 @@
-﻿global using MyProject.Web.AcceptanceTests.Pages;
+﻿global using Web.AcceptanceTests.Pages;
 global using BoDi;
 global using FluentAssertions;
 global using Microsoft.Playwright;

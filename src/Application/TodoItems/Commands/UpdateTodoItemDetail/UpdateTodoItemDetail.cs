@@ -1,5 +1,5 @@
-﻿using MyProject.Application.Common.Interfaces;
-using MyProject.Domain.Enums;
+﻿using Application.Common.Interfaces;
+using Domain.Enums;
 
 namespace MyProject.Application.TodoItems.Commands.UpdateTodoItemDetail;
 

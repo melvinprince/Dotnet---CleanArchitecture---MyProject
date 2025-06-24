@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace MyProject.Web.AcceptanceTests;
+namespace Web.AcceptanceTests;
 
 public static class ConfigurationHelper
 {

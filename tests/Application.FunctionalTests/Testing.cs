@@ -1,6 +1,6 @@
-﻿using MyProject.Domain.Constants;
-using MyProject.Infrastructure.Data;
-using MyProject.Infrastructure.Identity;
+﻿using Domain.Constants;
+using Infrastructure.Data;
+using Infrastructure.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

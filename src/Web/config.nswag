@@ -4,6 +4,7 @@
   "documentGenerator": {
     "aspNetCoreToOpenApi": {
       "project": "Web.csproj",
+      "validateServices": false,
       "msBuildProjectExtensionsPath": null,
       "configuration": null,
       "runtime": null,

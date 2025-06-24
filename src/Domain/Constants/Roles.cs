@@ -1,4 +1,4 @@
-﻿namespace MyProject.Domain.Constants;
+﻿namespace Domain.Constants;
 
 public abstract class Roles
 {

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MyProject.Web": {
+    "Web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -71,11 +71,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "MyProject.Web:build:production"
+              "buildTarget": "Web:build:production"
             },
             "development": {
               "proxyConfig": "proxy.conf.js",
-              "buildTarget": "MyProject.Web:build:development"
+              "buildTarget": "Web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "MyProject.Web:build"
+            "buildTarget": "Web:build"
           }
         },
         "test": {

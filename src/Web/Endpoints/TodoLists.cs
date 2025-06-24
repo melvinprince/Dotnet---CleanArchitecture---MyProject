@@ -4,7 +4,7 @@ using MyProject.Application.TodoLists.Commands.UpdateTodoList;
 using MyProject.Application.TodoLists.Queries.GetTodos;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace MyProject.Web.Endpoints;
+namespace Web.Endpoints;
 
 public class TodoLists : EndpointGroupBase
 {
