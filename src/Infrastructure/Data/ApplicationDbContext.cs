@@ -1,34 +1,50 @@
-﻿using Domain.Entities;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;  // for IdentityDbContext<TUser>
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;           // for RelationalEventId
 using System.Reflection;
 using Application.Common.Interfaces;
+using Domain.Entities;
 using Infrastructure.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data;
 
-public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
+namespace Infrastructure.Data
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
-        : base(options) { }
-
-    public DbSet<TodoList> TodoLists => Set<TodoList>();
-    public DbSet<TodoItem> TodoItems => Set<TodoItem>();
-    public DbSet<Book> Books => Set<Book>();
-    public DbSet<Author> Authors => Set<Author>();
-    public DbSet<Borrower> Borrowers => Set<Borrower>();
-
-    protected override void OnModelCreating(ModelBuilder builder)
+    public class ApplicationDbContext : 
+        IdentityDbContext<ApplicationUser>, 
+        IApplicationDbContext
     {
-        base.OnModelCreating(builder);
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
+            : base(options) { }
 
-        // This line loads all entity configurations from the same assembly
-        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    }
+        // ← Add this override
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder
+                .ConfigureWarnings(w => 
+                    w.Ignore(RelationalEventId.PendingModelChangesWarning)
+                );
+            
+            base.OnConfiguring(optionsBuilder);
+        }
 
-    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-    {
-        // This will be extended with audit & domain event logic
-        return await base.SaveChangesAsync(cancellationToken);
+        public DbSet<TodoList> TodoLists => Set<TodoList>();
+        public DbSet<TodoItem> TodoItems => Set<TodoItem>();
+        public DbSet<Book> Books => Set<Book>();
+        public DbSet<Author> Authors => Set<Author>();
+        public DbSet<Borrower> Borrowers => Set<Borrower>();
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            builder.Entity<Book>()
+                .HasOne(b => b.Borrower)
+                .WithMany()
+                .HasForeignKey(b => b.BorrowerId)
+                .OnDelete(DeleteBehavior.SetNull);
+        }
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+            => await base.SaveChangesAsync(cancellationToken);
     }
 }

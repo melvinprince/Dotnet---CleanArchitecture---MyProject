@@ -24,7 +24,13 @@ namespace Application.Books.Queries.GetBookById
                 throw new KeyNotFoundException("Book not found.");
 
             return new BookDto(
-                b.Id, b.Title, b.ISBN, b.PublishedDate, b.AuthorId, b.Status
+                b.Id,
+                b.Title,
+                b.ISBN,
+                b.PublishedDate,
+                b.AuthorId,
+                b.Status,
+                b.BorrowerId     // ← include the new BorrowerId
             );
         }
     }

@@ -1,5 +1,7 @@
+// src/Application/Books/Commands/BorrowBook/BorrowBookCommandHandler.cs
 using Application.Common.Interfaces;
 using Domain.Enums;
+using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,7 +33,8 @@ namespace Application.Books.Commands.BorrowBook
             if (borrower == null)
                 throw new Exception("Borrower not found.");
 
-            book.Borrow();
+            // ← pass the BorrowerId so it’s recorded on the book
+            book.Borrow(request.BorrowerId);
 
             await _context.SaveChangesAsync(cancellationToken);
 

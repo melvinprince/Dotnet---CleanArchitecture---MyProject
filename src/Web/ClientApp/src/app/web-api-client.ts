@@ -2236,6 +2236,7 @@ export class BookDto implements IBookDto {
     publishedDate?: Date;
     authorId?: string;
     status?: BookStatus;
+    borrowerId?: string | undefined;
 
     constructor(data?: IBookDto) {
         if (data) {
@@ -2254,6 +2255,7 @@ export class BookDto implements IBookDto {
             this.publishedDate = _data["publishedDate"] ? new Date(_data["publishedDate"].toString()) : <any>undefined;
             this.authorId = _data["authorId"];
             this.status = _data["status"];
+            this.borrowerId = _data["borrowerId"];
         }
     }
 
@@ -2272,6 +2274,7 @@ export class BookDto implements IBookDto {
         data["publishedDate"] = this.publishedDate ? this.publishedDate.toISOString() : <any>undefined;
         data["authorId"] = this.authorId;
         data["status"] = this.status;
+        data["borrowerId"] = this.borrowerId;
         return data;
     }
 }
@@ -2283,6 +2286,7 @@ export interface IBookDto {
     publishedDate?: Date;
     authorId?: string;
     status?: BookStatus;
+    borrowerId?: string | undefined;
 }
 
 export enum BookStatus {

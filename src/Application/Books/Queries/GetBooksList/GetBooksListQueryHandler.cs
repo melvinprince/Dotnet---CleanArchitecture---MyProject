@@ -24,7 +24,8 @@ namespace Application.Books.Queries.GetBooksList
                     b.ISBN,
                     b.PublishedDate,
                     b.AuthorId,
-                    b.Status
+                    b.Status,
+                    b.BorrowerId        // ← include the new BorrowerId
                 ))
                 .ToListAsync(cancellationToken);
         }
