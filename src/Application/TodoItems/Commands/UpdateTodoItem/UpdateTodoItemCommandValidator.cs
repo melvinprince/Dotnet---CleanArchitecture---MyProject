@@ -1,4 +1,4 @@
-﻿namespace MyProject.Application.TodoItems.Commands.UpdateTodoItem;
+﻿namespace Application.TodoItems.Commands.UpdateTodoItem;
 
 public class UpdateTodoItemCommandValidator : AbstractValidator<UpdateTodoItemCommand>
 {

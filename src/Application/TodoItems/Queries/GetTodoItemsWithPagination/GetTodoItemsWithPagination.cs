@@ -1,8 +1,8 @@
 ﻿using Application.Common.Interfaces;
-using MyProject.Application.Common.Mappings;
-using MyProject.Application.Common.Models;
+using Application.Common.Mappings;
+using Application.Common.Models;
 
-namespace MyProject.Application.TodoItems.Queries.GetTodoItemsWithPagination;
+namespace Application.TodoItems.Queries.GetTodoItemsWithPagination;
 
 public record GetTodoItemsWithPaginationQuery : IRequest<PaginatedList<TodoItemBriefDto>>
 {

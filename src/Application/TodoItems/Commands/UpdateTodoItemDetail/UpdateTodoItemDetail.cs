@@ -1,7 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using Domain.Enums;
 
-namespace MyProject.Application.TodoItems.Commands.UpdateTodoItemDetail;
+namespace Application.TodoItems.Commands.UpdateTodoItemDetail;
 
 public record UpdateTodoItemDetailCommand : IRequest
 {

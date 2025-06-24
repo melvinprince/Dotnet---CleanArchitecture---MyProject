@@ -2,13 +2,13 @@
 using System.Runtime.CompilerServices;
 using AutoMapper;
 using Application.Common.Interfaces;
-using MyProject.Application.Common.Models;
-using MyProject.Application.TodoItems.Queries.GetTodoItemsWithPagination;
-using MyProject.Application.TodoLists.Queries.GetTodos;
+using Application.Common.Models;
+using Application.TodoItems.Queries.GetTodoItemsWithPagination;
+using Application.TodoLists.Queries.GetTodos;
 using Domain.Entities;
 using NUnit.Framework;
 
-namespace MyProject.Application.UnitTests.Common.Mappings;
+namespace Application.UnitTests.Common.Mappings;
 
 public class MappingTests
 {

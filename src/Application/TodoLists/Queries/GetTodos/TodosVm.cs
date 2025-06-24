@@ -1,6 +1,6 @@
-﻿using MyProject.Application.Common.Models;
+﻿using Application.Common.Models;
 
-namespace MyProject.Application.TodoLists.Queries.GetTodos;
+namespace Application.TodoLists.Queries.GetTodos;
 
 public class TodosVm
 {

@@ -1,8 +1,8 @@
-﻿using MyProject.Application.Common.Exceptions;
-using MyProject.Application.TodoLists.Commands.CreateTodoList;
+﻿using Application.Common.Exceptions;
+using Application.TodoLists.Commands.CreateTodoList;
 using Domain.Entities;
 
-namespace MyProject.Application.FunctionalTests.TodoLists.Commands;
+namespace Application.FunctionalTests.TodoLists.Commands;
 
 using static Testing;
 

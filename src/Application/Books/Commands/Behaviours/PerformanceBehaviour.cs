@@ -2,7 +2,7 @@
 using Application.Common.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace MyProject.Application.Common.Behaviours;
+namespace Application.Common.Behaviours;
 
 public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {

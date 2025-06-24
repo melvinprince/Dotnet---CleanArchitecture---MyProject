@@ -2,7 +2,7 @@
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 
-namespace MyProject.Application.Common.Behaviours;
+namespace Application.Common.Behaviours;
 
 public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where TRequest : notnull
 {

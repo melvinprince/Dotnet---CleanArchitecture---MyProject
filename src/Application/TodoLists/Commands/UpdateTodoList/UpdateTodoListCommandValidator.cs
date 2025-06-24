@@ -1,6 +1,6 @@
 ﻿using Application.Common.Interfaces;
 
-namespace MyProject.Application.TodoLists.Commands.UpdateTodoList;
+namespace Application.TodoLists.Commands.UpdateTodoList;
 
 public class UpdateTodoListCommandValidator : AbstractValidator<UpdateTodoListCommand>
 {

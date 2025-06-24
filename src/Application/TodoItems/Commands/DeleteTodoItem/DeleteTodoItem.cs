@@ -1,7 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using Domain.Events;
 
-namespace MyProject.Application.TodoItems.Commands.DeleteTodoItem;
+namespace Application.TodoItems.Commands.DeleteTodoItem;
 
 public record DeleteTodoItemCommand(int Id) : IRequest;
 

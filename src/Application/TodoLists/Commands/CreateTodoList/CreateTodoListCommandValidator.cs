@@ -1,6 +1,6 @@
 ﻿using Application.Common.Interfaces;
 
-namespace MyProject.Application.TodoLists.Commands.CreateTodoList;
+namespace Application.TodoLists.Commands.CreateTodoList;
 
 public class CreateTodoListCommandValidator : AbstractValidator<CreateTodoListCommand>
 {

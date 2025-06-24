@@ -1,8 +1,8 @@
-﻿using MyProject.Application.TodoLists.Queries.GetTodos;
+﻿using Application.TodoLists.Queries.GetTodos;
 using Domain.Entities;
 using Domain.ValueObjects;
 
-namespace MyProject.Application.FunctionalTests.TodoLists.Queries;
+namespace Application.FunctionalTests.TodoLists.Queries;
 
 using static Testing;
 

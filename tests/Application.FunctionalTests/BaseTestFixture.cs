@@ -1,4 +1,4 @@
-﻿namespace MyProject.Application.FunctionalTests;
+﻿namespace Application.FunctionalTests;
 
 using static Testing;
 

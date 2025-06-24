@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Respawn;
 using Testcontainers.MsSql;
 
-namespace MyProject.Application.FunctionalTests;
+namespace Application.FunctionalTests;
 
 public class SqlTestcontainersTestDatabase : ITestDatabase
 {

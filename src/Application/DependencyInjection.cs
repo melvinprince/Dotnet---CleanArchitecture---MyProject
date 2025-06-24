@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using MyProject.Application.Common.Behaviours;
+using Application.Common.Behaviours;
 using Microsoft.Extensions.Hosting;
 
 namespace Microsoft.Extensions.DependencyInjection;

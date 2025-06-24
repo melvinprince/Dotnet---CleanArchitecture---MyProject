@@ -328,6 +328,97 @@
           }
         }
       }
+    },
+    "/api/Books": {
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "AddBook",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddBookCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Books/borrow": {
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "operationId": "BorrowBook",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BorrowBookCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/Authors": {
+      "post": {
+        "tags": [
+          "Authors"
+        ],
+        "operationId": "AddAuthor",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddAuthorCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -577,6 +668,61 @@
             "format": "int32"
           },
           "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "AddBookCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "authorId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "title": {
+            "type": "string"
+          },
+          "isbn": {
+            "type": "string"
+          },
+          "publishedDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "BorrowBookCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "bookId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "borrowerId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "AddAuthorCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "biography": {
             "type": "string",
             "nullable": true
           }

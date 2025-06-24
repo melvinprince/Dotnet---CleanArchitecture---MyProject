@@ -1,4 +1,4 @@
-﻿namespace MyProject.Application.WeatherForecasts.Queries.GetWeatherForecasts;
+﻿namespace Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
 public class WeatherForecast
 {

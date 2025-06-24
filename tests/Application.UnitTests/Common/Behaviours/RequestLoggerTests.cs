@@ -1,11 +1,11 @@
-﻿using MyProject.Application.Common.Behaviours;
+﻿using Application.Common.Behaviours;
 using Application.Common.Interfaces;
-using MyProject.Application.TodoItems.Commands.CreateTodoItem;
+using Application.TodoItems.Commands.CreateTodoItem;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
-namespace MyProject.Application.UnitTests.Common.Behaviours;
+namespace Application.UnitTests.Common.Behaviours;
 
 public class RequestLoggerTests
 {

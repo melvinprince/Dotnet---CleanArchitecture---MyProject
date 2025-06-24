@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MyProject.Application.FunctionalTests;
+namespace Application.FunctionalTests;
 
 [SetUpFixture]
 public partial class Testing

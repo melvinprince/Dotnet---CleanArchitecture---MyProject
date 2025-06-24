@@ -1,8 +1,8 @@
 ﻿using Application.Common.Interfaces;
-using MyProject.Application.Common.Security;
+using Application.Common.Security;
 using Domain.Constants;
 
-namespace MyProject.Application.TodoLists.Commands.PurgeTodoLists;
+namespace Application.TodoLists.Commands.PurgeTodoLists;
 
 [Authorize(Roles = Roles.Administrator)]
 [Authorize(Policy = Policies.CanPurge)]

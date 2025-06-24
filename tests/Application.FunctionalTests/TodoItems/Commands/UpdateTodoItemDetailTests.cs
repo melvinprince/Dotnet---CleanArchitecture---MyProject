@@ -1,11 +1,11 @@
-﻿using MyProject.Application.TodoItems.Commands.CreateTodoItem;
-using MyProject.Application.TodoItems.Commands.UpdateTodoItem;
-using MyProject.Application.TodoItems.Commands.UpdateTodoItemDetail;
-using MyProject.Application.TodoLists.Commands.CreateTodoList;
+﻿using Application.TodoItems.Commands.CreateTodoItem;
+using Application.TodoItems.Commands.UpdateTodoItem;
+using Application.TodoItems.Commands.UpdateTodoItemDetail;
+using Application.TodoLists.Commands.CreateTodoList;
 using Domain.Entities;
 using Domain.Enums;
 
-namespace MyProject.Application.FunctionalTests.TodoItems.Commands;
+namespace Application.FunctionalTests.TodoItems.Commands;
 
 using static Testing;
 

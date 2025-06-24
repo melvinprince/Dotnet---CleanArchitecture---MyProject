@@ -1,7 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using Domain.Entities;
 
-namespace MyProject.Application.TodoLists.Commands.CreateTodoList;
+namespace Application.TodoLists.Commands.CreateTodoList;
 
 public record CreateTodoListCommand : IRequest<int>
 {

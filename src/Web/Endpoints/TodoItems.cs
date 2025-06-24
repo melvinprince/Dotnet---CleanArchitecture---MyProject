@@ -1,9 +1,9 @@
-﻿using MyProject.Application.Common.Models;
-using MyProject.Application.TodoItems.Commands.CreateTodoItem;
-using MyProject.Application.TodoItems.Commands.DeleteTodoItem;
-using MyProject.Application.TodoItems.Commands.UpdateTodoItem;
-using MyProject.Application.TodoItems.Commands.UpdateTodoItemDetail;
-using MyProject.Application.TodoItems.Queries.GetTodoItemsWithPagination;
+﻿using Application.Common.Models;
+using Application.TodoItems.Commands.CreateTodoItem;
+using Application.TodoItems.Commands.DeleteTodoItem;
+using Application.TodoItems.Commands.UpdateTodoItem;
+using Application.TodoItems.Commands.UpdateTodoItemDetail;
+using Application.TodoItems.Queries.GetTodoItemsWithPagination;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Web.Endpoints;

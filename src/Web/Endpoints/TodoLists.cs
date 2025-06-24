@@ -1,7 +1,7 @@
-﻿using MyProject.Application.TodoLists.Commands.CreateTodoList;
-using MyProject.Application.TodoLists.Commands.DeleteTodoList;
-using MyProject.Application.TodoLists.Commands.UpdateTodoList;
-using MyProject.Application.TodoLists.Queries.GetTodos;
+﻿using Application.TodoLists.Commands.CreateTodoList;
+using Application.TodoLists.Commands.DeleteTodoList;
+using Application.TodoLists.Commands.UpdateTodoList;
+using Application.TodoLists.Queries.GetTodos;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Web.Endpoints;

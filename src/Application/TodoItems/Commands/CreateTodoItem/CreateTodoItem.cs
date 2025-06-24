@@ -2,7 +2,7 @@
 using Domain.Entities;
 using Domain.Events;
 
-namespace MyProject.Application.TodoItems.Commands.CreateTodoItem;
+namespace Application.TodoItems.Commands.CreateTodoItem;
 
 public record CreateTodoItemCommand : IRequest<int>
 {

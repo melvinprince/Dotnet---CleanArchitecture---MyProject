@@ -1,9 +1,9 @@
 ﻿using Application.Common.Interfaces;
-using MyProject.Application.Common.Models;
-using MyProject.Application.Common.Security;
+using Application.Common.Models;
+using Application.Common.Security;
 using Domain.Enums;
 
-namespace MyProject.Application.TodoLists.Queries.GetTodos;
+namespace Application.TodoLists.Queries.GetTodos;
 
 [Authorize]
 public record GetTodosQuery : IRequest<TodosVm>;

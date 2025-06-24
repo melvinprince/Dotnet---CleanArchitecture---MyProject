@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Respawn;
 
-namespace MyProject.Application.FunctionalTests;
+namespace Application.FunctionalTests;
 
 public class SqlTestDatabase : ITestDatabase
 {

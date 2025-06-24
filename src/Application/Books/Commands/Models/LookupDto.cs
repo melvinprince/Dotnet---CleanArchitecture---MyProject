@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace MyProject.Application.Common.Models;
+namespace Application.Common.Models;
 
 public class LookupDto
 {

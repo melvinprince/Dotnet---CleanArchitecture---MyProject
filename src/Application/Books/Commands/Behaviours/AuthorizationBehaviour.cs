@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
-using MyProject.Application.Common.Exceptions;
+using Application.Common.Exceptions;
 using Application.Common.Interfaces;
-using MyProject.Application.Common.Security;
+using Application.Common.Security;
 
-namespace MyProject.Application.Common.Behaviours;
+namespace Application.Common.Behaviours;
 
 public class AuthorizationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {

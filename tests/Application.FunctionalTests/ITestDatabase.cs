@@ -1,6 +1,6 @@
 ﻿using System.Data.Common;
 
-namespace MyProject.Application.FunctionalTests;
+namespace Application.FunctionalTests;
 
 public interface ITestDatabase
 {

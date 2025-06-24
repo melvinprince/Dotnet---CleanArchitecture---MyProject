@@ -1,4 +1,4 @@
-﻿using MyProject.Application.WeatherForecasts.Queries.GetWeatherForecasts;
+﻿using Application.WeatherForecasts.Queries.GetWeatherForecasts;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Web.Endpoints;

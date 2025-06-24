@@ -1,5 +1,5 @@
 using Application.Common.Interfaces;
-using MyProject.Application.Common.Models;
+using Application.Common.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

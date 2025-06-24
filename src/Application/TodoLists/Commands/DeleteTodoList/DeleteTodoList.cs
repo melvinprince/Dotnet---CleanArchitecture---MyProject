@@ -1,6 +1,6 @@
 ﻿using Application.Common.Interfaces;
 
-namespace MyProject.Application.TodoLists.Commands.DeleteTodoList;
+namespace Application.TodoLists.Commands.DeleteTodoList;
 
 public record DeleteTodoListCommand(int Id) : IRequest;
 

@@ -1,6 +1,6 @@
 ﻿using Application.Common.Interfaces;
 
-namespace MyProject.Application.TodoItems.Commands.UpdateTodoItem;
+namespace Application.TodoItems.Commands.UpdateTodoItem;
 
 public record UpdateTodoItemCommand : IRequest
 {

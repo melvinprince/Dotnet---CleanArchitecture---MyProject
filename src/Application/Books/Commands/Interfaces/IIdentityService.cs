@@ -1,4 +1,4 @@
-﻿using MyProject.Application.Common.Models;
+﻿using Application.Common.Models;
 
 namespace Application.Common.Interfaces;
 
