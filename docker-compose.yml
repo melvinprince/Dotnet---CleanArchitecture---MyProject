@@ -5,7 +5,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: "admin" # choose a secure password
+      MSSQL_SA_PASSWORD: "@Melvin0587" # choose a secure password
     ports:
       - "1433:1433"
     volumes:
@@ -15,10 +15,10 @@ services:
     build: .
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: http://+:8080
-      ConnectionStrings__MyProjectDb: "Server=db;Database=MyProjectDb;User Id=sa;Password=admin;TrustServerCertificate=True;MultipleActiveResultSets=true"
+      ASPNETCORE_URLS: http://+:44447
+      ConnectionStrings__MyProjectDb: "Server=db;Database=MyProjectDb;User Id=sa;Password=@Melvin0587;TrustServerCertificate=True;MultipleActiveResultSets=true"
     ports:
-      - "8080:8080"
+      - "44447:44447"
     depends_on:
       - db
 
