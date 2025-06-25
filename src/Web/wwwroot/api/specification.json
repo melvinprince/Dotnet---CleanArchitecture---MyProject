@@ -496,6 +496,32 @@
           }
         }
       }
+    },
+    "/api/Session": {
+      "get": {
+        "tags": [
+          "Session"
+        ],
+        "operationId": "GetApiSession",
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/Session/logout": {
+      "post": {
+        "tags": [
+          "Session"
+        ],
+        "operationId": "PostApiSessionLogout",
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
     }
   },
   "components": {

@@ -1,6 +1,66 @@
-<p>login works!</p>
-<form (ngSubmit)="login()" [formGroup]="form">
-  <input formControlName="email" type="email" placeholder="Email" />
-  <input formControlName="password" type="password" placeholder="Password" />
-  <button type="submit">Sign in</button>
-</form>
+<div
+  class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 via-white to-gray-200 px-4"
+>
+  <div
+    class="w-full max-w-md p-10 rounded-3xl border border-gray-200 shadow-2xl bg-white/70 backdrop-blur-xl"
+  >
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">
+        Welcome Back
+      </h2>
+      <p class="text-sm text-gray-500 mt-1">Sign in to your account</p>
+    </div>
+
+    <form (ngSubmit)="login()" [formGroup]="form" class="flex flex-col gap-8">
+      <!-- Email -->
+      <div class="relative w-full">
+        <input
+          id="email"
+          formControlName="email"
+          type="email"
+          placeholder=" "
+          class="peer w-full px-4 pt-6 pb-2 text-sm border border-gray-300 rounded-xl bg-white/50 backdrop-blur-md placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+        />
+        <label
+          for="email"
+          class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-600"
+        >
+          Email address
+        </label>
+      </div>
+
+      <!-- Password -->
+      <div class="relative w-full">
+        <input
+          id="password"
+          formControlName="password"
+          type="password"
+          placeholder=" "
+          class="peer w-full px-4 pt-6 pb-2 text-sm border border-gray-300 rounded-xl bg-white/50 backdrop-blur-md placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+        />
+        <label
+          for="password"
+          class="absolute left-4 top-2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-600"
+        >
+          Password
+        </label>
+      </div>
+
+      <!-- Button -->
+      <div class="w-[10rem]">
+        <button
+          type="submit"
+          class="py-3 rounded-xl text-white bg-blue-600 hover:bg-blue-700 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-sm font-semibold tracking-wide bg-black w-[10rem]"
+        >
+          Sign in
+        </button>
+      </div>
+    </form>
+
+    <!-- Footer -->
+    <div class="mt-6 text-center text-sm text-gray-500">
+      Don't have an account?
+      <a href="#" class="text-blue-600 hover:underline font-medium">Sign up</a>
+    </div>
+  </div>
+</div>
