@@ -1,7 +1,7 @@
 // src/app/app.module.ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_ID } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {
   HTTP_INTERCEPTORS,
@@ -25,6 +25,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { BooksListComponent } from './books/books-list/books-list.component';
 import { BorrowersListComponent } from './borrowers/borrowers-list/borrowers-list.component';
 import { AuthorsListComponent } from './authors/authors-list/authors-list.component';
+import { BorrowBookFormComponent } from './borrow-book-form/borrow-book-form.component';
 
 @NgModule({
   declarations: [
@@ -37,15 +38,18 @@ import { AuthorsListComponent } from './authors/authors-list/authors-list.compon
     FooterComponent,
     BorrowersListComponent,
     AuthorsListComponent,
+    BorrowBookFormComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'books', component: BooksListComponent },
       { path: 'borrowers', component: BorrowersListComponent },
       { path: 'authors', component: AuthorsListComponent },
+      { path: 'borrow', component: BorrowBookFormComponent },
     ]),
     BrowserAnimationsModule,
     ModalModule.forRoot(),

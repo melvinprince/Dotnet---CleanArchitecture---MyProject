@@ -8,7 +8,7 @@ import { Book, BookService } from 'src/app/web-api-client';
   styleUrls: ['./books-list.component.scss'],
 })
 export class BooksListComponent implements OnInit {
-  books: Book[] = []; 
+  books: Book[] = [];
   loading = false;
   error: string | null = null;
 
