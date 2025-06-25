@@ -42,19 +42,9 @@ export class BorrowBookComponent implements OnInit {
         firstValueFrom(this.borrowerService.getAll()),
       ]);
 
-      console.log('🔍 All Books Fetched:', books);
-
-      books.forEach((book) => {
-        console.log(
-          `📚 Book: "${book.title}" | ISBN: ${book.isbn} | Status: ${book.status}`
-        );
-      });
-
       this.books = books.filter((b) => b.status === 0);
-      console.log('✅ Available Books:', this.books);
 
       this.borrowers = borrowers;
-      console.log('👥 Borrowers Fetched:', this.borrowers);
     } catch (err) {
       console.error('❌ Error loading books or borrowers:', err);
       this.error = 'Failed to load books or borrowers.';
@@ -68,11 +58,9 @@ export class BorrowBookComponent implements OnInit {
     this.error = null;
 
     const { bookId, borrowerId } = this.form.value;
-    console.log(`🚀 Borrowing bookId: ${bookId}, borrowerId: ${borrowerId}`);
 
     this.bookService.borrow(bookId!, borrowerId!).subscribe({
       next: () => {
-        console.log('✅ Book borrowed successfully');
         this.success = true;
         setTimeout(() => this.router.navigate(['/books']), 1000);
       },
