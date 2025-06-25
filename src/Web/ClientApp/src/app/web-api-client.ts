@@ -92,7 +92,7 @@ export class AuthorService extends ApiService {
 }
 
 // --- Book Models & Service ---
-export type BookStatus = 'Available' | 'Borrowed';
+export type BookStatus = 0 | 1;
 
 export interface Book {
   id: string;

@@ -25,7 +25,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { BooksListComponent } from './books/books-list/books-list.component';
 import { BorrowersListComponent } from './borrowers/borrowers-list/borrowers-list.component';
 import { AuthorsListComponent } from './authors/authors-list/authors-list.component';
-import { BorrowBookFormComponent } from './borrow-book-form/borrow-book-form.component';
+import { BorrowBookComponent } from './borrow-book-form/borrow-book-form.component';
 import { BookAddComponent } from './books/add-book/add-book.component';
 import { AuthorAddComponent } from './authors/add-author/add-author.component';
 import { BorrowerAddComponent } from './borrowers/add-borrower/add-borrower.component';
@@ -41,10 +41,10 @@ import { BorrowerAddComponent } from './borrowers/add-borrower/add-borrower.comp
     FooterComponent,
     BorrowersListComponent,
     AuthorsListComponent,
-    BorrowBookFormComponent,
     BookAddComponent,
     AuthorAddComponent,
     BorrowerAddComponent,
+    BorrowBookComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +57,7 @@ import { BorrowerAddComponent } from './borrowers/add-borrower/add-borrower.comp
       { path: 'borrowers', component: BorrowersListComponent },
       { path: 'authors', component: AuthorsListComponent },
       { path: 'authors/new', component: AuthorAddComponent },
-      { path: 'borrow', component: BorrowBookFormComponent },
+      { path: 'borrow', component: BorrowBookComponent },
       { path: 'borrowers/new', component: BorrowerAddComponent },
     ]),
     BrowserAnimationsModule,
