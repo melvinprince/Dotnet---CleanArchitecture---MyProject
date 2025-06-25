@@ -1,0 +1,53 @@
+# ASP.NET build artifacts
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.db
+
+# Angular build artifacts
+node_modules/
+dist/
+build/
+
+# IDE/project files
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.docstates
+
+# Logs and coverage
+*.log
+*.tsbuildinfo
+coverage/
+TestResults/
+.testresults/
+
+# Git and version control
+.git/
+.gitignore
+.gitattributes
+
+# Environment variables and secrets
+.env
+.env.*
+*.secrets.json
+secrets.json
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Docker-specific
+docker-compose.override.yml
+docker-compose.debug.yml
+Dockerfile
+.dockerignore
+
+# npm/yarn lock files (optional, include only if you install fresh on build)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

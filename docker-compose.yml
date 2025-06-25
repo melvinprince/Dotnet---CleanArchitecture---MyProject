@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "admin" # choose a secure password
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserverdata:/var/opt/mssql
+
+  web:
+    build: .
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__MyProjectDb: "Server=db;Database=MyProjectDb;User Id=sa;Password=admin;TrustServerCertificate=True;MultipleActiveResultSets=true"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  sqlserverdata:
