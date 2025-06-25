@@ -1,0 +1,48 @@
+<div class="container py-4">
+  <h2>Add New Book</h2>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border"></div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div *ngIf="success" class="alert alert-success">
+    Book added successfully! Redirecting…
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!loading && !success">
+    <div class="form-group mb-3">
+      <label for="title">Title</label>
+      <input id="title" class="form-control" formControlName="title" />
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="isbn">ISBN</label>
+      <input id="isbn" class="form-control" formControlName="isbn" />
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="author">Author</label>
+      <select id="author" class="form-control" formControlName="authorId">
+        <option value="" disabled>Select an author</option>
+        <option *ngFor="let a of authors" [value]="a.id">
+          {{ a.firstName }} {{ a.lastName }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="publishedDate">Published Date</label>
+      <input
+        id="publishedDate"
+        type="date"
+        class="form-control"
+        formControlName="publishedDate"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="form.invalid">
+      Add Book
+    </button>
+  </form>
+</div>

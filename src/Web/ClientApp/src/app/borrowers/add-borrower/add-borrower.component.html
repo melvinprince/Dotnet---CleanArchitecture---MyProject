@@ -1,0 +1,39 @@
+<!-- src/app/borrower-add/borrower-add.component.html -->
+<div class="container py-4">
+  <h2>Add New Borrower</h2>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div *ngIf="success" class="alert alert-success">
+    Borrower added successfully! Redirecting…
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!success">
+    <div class="form-group mb-3">
+      <label for="fullName">Full Name</label>
+      <input id="fullName" class="form-control" formControlName="fullName" />
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        class="form-control"
+        formControlName="email"
+      />
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        id="phoneNumber"
+        class="form-control"
+        formControlName="phoneNumber"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="form.invalid">
+      Add Borrower
+    </button>
+  </form>
+</div>

@@ -26,6 +26,9 @@ import { BooksListComponent } from './books/books-list/books-list.component';
 import { BorrowersListComponent } from './borrowers/borrowers-list/borrowers-list.component';
 import { AuthorsListComponent } from './authors/authors-list/authors-list.component';
 import { BorrowBookFormComponent } from './borrow-book-form/borrow-book-form.component';
+import { BookAddComponent } from './books/add-book/add-book.component';
+import { AuthorAddComponent } from './authors/add-author/add-author.component';
+import { BorrowerAddComponent } from './borrowers/add-borrower/add-borrower.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { BorrowBookFormComponent } from './borrow-book-form/borrow-book-form.com
     BorrowersListComponent,
     AuthorsListComponent,
     BorrowBookFormComponent,
+    BookAddComponent,
+    AuthorAddComponent,
+    BorrowerAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,9 +53,12 @@ import { BorrowBookFormComponent } from './borrow-book-form/borrow-book-form.com
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'books', component: BooksListComponent },
+      { path: 'books/new', component: BookAddComponent },
       { path: 'borrowers', component: BorrowersListComponent },
       { path: 'authors', component: AuthorsListComponent },
+      { path: 'authors/new', component: AuthorAddComponent },
       { path: 'borrow', component: BorrowBookFormComponent },
+      { path: 'borrowers/new', component: BorrowerAddComponent },
     ]),
     BrowserAnimationsModule,
     ModalModule.forRoot(),

@@ -1,0 +1,45 @@
+<!-- src/app/author-add/author-add.component.html -->
+<div class="container py-4">
+  <h2>Add New Author</h2>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div *ngIf="success" class="alert alert-success">
+    Author added successfully! Redirecting…
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!success">
+    <div class="form-group mb-3">
+      <label for="firstName">First Name</label>
+      <input id="firstName" class="form-control" formControlName="firstName" />
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="lastName">Last Name</label>
+      <input id="lastName" class="form-control" formControlName="lastName" />
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input
+        id="dateOfBirth"
+        type="date"
+        class="form-control"
+        formControlName="dateOfBirth"
+      />
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="biography">Biography</label>
+      <textarea
+        id="biography"
+        class="form-control"
+        formControlName="biography"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="form.invalid">
+      Add Author
+    </button>
+  </form>
+</div>
