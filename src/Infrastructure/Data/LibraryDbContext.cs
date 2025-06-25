@@ -11,8 +11,6 @@ namespace Infrastructure.Data
         {
         }
 
-        public DbSet<TodoList> TodoLists => Set<TodoList>();
-        public DbSet<TodoItem> TodoItems => Set<TodoItem>();
         public DbSet<Book> Books => Set<Book>();
         public DbSet<Author> Authors => Set<Author>();
         public DbSet<Borrower> Borrowers => Set<Borrower>();

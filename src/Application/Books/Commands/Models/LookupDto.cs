@@ -12,8 +12,9 @@ public class LookupDto
     {
         public Mapping()
         {
-            CreateMap<TodoList, LookupDto>();
-            CreateMap<TodoItem, LookupDto>();
+            CreateMap<Book, LookupDto>();
+            CreateMap<Author, LookupDto>();
+            CreateMap<Borrower, LookupDto>();
         }
     }
 }
