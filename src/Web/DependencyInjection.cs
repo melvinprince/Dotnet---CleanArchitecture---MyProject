@@ -21,7 +21,7 @@ public static class DependencyInjection
 
         builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
-        builder.Services.AddRazorPages();
+        // builder.Services.AddRazorPages();
 
         // Customise default API behaviour
         builder.Services.Configure<ApiBehaviorOptions>(options =>

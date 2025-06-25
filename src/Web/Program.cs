@@ -23,9 +23,13 @@ else
     app.UseHsts();
 }
 
+
 app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseAuthentication();
+app.UseAuthorization();
+
 
 app.UseSwaggerUi(settings =>
 {
@@ -33,7 +37,7 @@ app.UseSwaggerUi(settings =>
     settings.DocumentPath = "/api/specification.json";
 });
 
-app.MapRazorPages();
+// app.MapRazorPages();
 
 app.MapFallbackToFile("index.html");
 

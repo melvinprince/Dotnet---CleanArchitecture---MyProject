@@ -1,5 +1,6 @@
 // File: src/Web/Endpoints/Authors/Authors.cs
 using MediatR;
+using Microsoft.AspNetCore.Authorization; 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Application.Common.Models;
@@ -9,6 +10,8 @@ using Application.Authors.Commands.DeleteAuthor;
 using Application.Authors.Queries.GetAuthorsList;
 using Application.Authors.Queries.GetAuthorById;
 using Web.Infrastructure;
+using Domain.Constants;
+
 
 namespace Web.Endpoints.Authors
 {
@@ -16,7 +19,8 @@ namespace Web.Endpoints.Authors
     {
         public override void Map(WebApplication app)
         {
-            var group = app.MapGroup(this);
+            var group = app.MapGroup(this)
+                   .RequireAuthorization(new AuthorizeAttribute { Roles = Roles.Administrator });
 
             group.MapGet(string.Empty, GetAll)
                  .WithName("GetAuthors");

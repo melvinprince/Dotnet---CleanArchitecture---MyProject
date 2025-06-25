@@ -1,5 +1,6 @@
 // File: src/Web/Endpoints/Borrowers/Borrowers.cs
 using MediatR;
+using Microsoft.AspNetCore.Authorization; 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Application.Common.Models;
@@ -9,6 +10,7 @@ using Application.Borrowers.Commands.UpdateBorrower;
 using Application.Borrowers.Queries.GetBorrowerById;
 using Application.Borrowers.Queries.GetBorrowersList;
 using Web.Infrastructure;
+using Domain.Constants;
 
 namespace Web.Endpoints.Borrowers
 {
@@ -16,7 +18,8 @@ namespace Web.Endpoints.Borrowers
     {
         public override void Map(WebApplication app)
         {
-            var group = app.MapGroup(this);
+            var group = app.MapGroup(this)
+                   .RequireAuthorization(new AuthorizeAttribute { Roles = Roles.Administrator });
 
             // GET all
             group.MapGet(string.Empty, GetAll)

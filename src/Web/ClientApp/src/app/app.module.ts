@@ -29,6 +29,7 @@ import { BorrowBookComponent } from './borrow-book-form/borrow-book-form.compone
 import { BookAddComponent } from './books/add-book/add-book.component';
 import { AuthorAddComponent } from './authors/add-author/add-author.component';
 import { BorrowerAddComponent } from './borrowers/add-borrower/add-borrower.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { BorrowerAddComponent } from './borrowers/add-borrower/add-borrower.comp
     BookAddComponent,
     AuthorAddComponent,
     BorrowerAddComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +61,7 @@ import { BorrowerAddComponent } from './borrowers/add-borrower/add-borrower.comp
       { path: 'authors/new', component: AuthorAddComponent },
       { path: 'borrow', component: BorrowBookComponent },
       { path: 'borrowers/new', component: BorrowerAddComponent },
+      { path: 'login', component: LoginComponent },
     ]),
     BrowserAnimationsModule,
     ModalModule.forRoot(),

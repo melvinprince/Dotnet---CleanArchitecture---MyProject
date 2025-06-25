@@ -4,12 +4,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Application.Common.Models;
 using Application.Books.Commands.AddBook;
+using MediatR;
+using Microsoft.AspNetCore.Authorization; 
 using Application.Books.Commands.BorrowBook;
 using Application.Books.Commands.UpdateBook;
 using Application.Books.Commands.DeleteBook;
 using Application.Books.Queries.GetBooksList;
 using Application.Books.Queries.GetBookById;
 using Web.Infrastructure;
+using Domain.Constants;
+
 
 namespace Web.Endpoints.Books
 {
@@ -17,7 +21,8 @@ namespace Web.Endpoints.Books
     {
         public override void Map(WebApplication app)
         {
-            var group = app.MapGroup(this);
+             var group = app.MapGroup(this)
+                   .RequireAuthorization(new AuthorizeAttribute { Roles = Roles.Administrator });
 
             group.MapGet(string.Empty, GetAll)
                  .WithName("GetBooks");
