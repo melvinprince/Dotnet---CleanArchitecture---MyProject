@@ -3,11 +3,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 import {
   BookService,
   BorrowerService,
-  Book,
-  Borrower,
 } from 'src/app/web-api-client';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
+import { Book } from '../models/book.model';
+import { Borrower } from '../models/borrower.model';
 
 @Component({
   selector: 'app-borrow-book',
@@ -35,13 +35,13 @@ export class BorrowBookComponent implements OnInit {
 
   async ngOnInit() {
     this.loading = true;
-
     try {
       const [books, borrowers] = await Promise.all([
         firstValueFrom(this.bookService.getAll()),
         firstValueFrom(this.borrowerService.getAll()),
       ]);
 
+      // ← use the string literal, not 0
       this.books = books.filter((b) => b.status === 0);
 
       this.borrowers = borrowers;

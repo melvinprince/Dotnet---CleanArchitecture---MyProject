@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Author, AuthorService } from 'src/app/web-api-client';
+import { Author } from 'src/app/models/author.model';
+import { AuthorService } from 'src/app/web-api-client';
 
 @Component({
   selector: 'app-authors-list',

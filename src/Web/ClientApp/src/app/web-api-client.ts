@@ -1,6 +1,9 @@
 import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Book } from './models/book.model';
+import { Author } from './models/author.model';
+import { Borrower } from './models/borrower.model';
 
 /**
  * Base URL injection token. In AppModule providers, bind to environment.apiBaseUrl
@@ -19,13 +22,6 @@ export class ApiService {
 }
 
 // --- Borrower Models & Service ---
-export interface Borrower {
-  id: string;
-  fullName: string;
-  email: string;
-  phoneNumber?: string;
-  dateRegistered: string; // ISO 8601
-}
 
 @Injectable({ providedIn: 'root' })
 export class BorrowerService extends ApiService {
@@ -55,13 +51,6 @@ export class BorrowerService extends ApiService {
 }
 
 // --- Author Models & Service ---
-export interface Author {
-  id: string;
-  firstName: string;
-  lastName: string;
-  dateOfBirth?: string; // ISO 8601
-  biography?: string;
-}
 
 @Injectable({ providedIn: 'root' })
 export class AuthorService extends ApiService {
@@ -92,17 +81,6 @@ export class AuthorService extends ApiService {
 }
 
 // --- Book Models & Service ---
-export type BookStatus = 0 | 1;
-
-export interface Book {
-  id: string;
-  title: string;
-  isbn: string;
-  publishedDate: string; // ISO 8601
-  authorId: string;
-  status: BookStatus;
-  borrowerId?: string;
-}
 
 @Injectable({ providedIn: 'root' })
 export class BookService extends ApiService {

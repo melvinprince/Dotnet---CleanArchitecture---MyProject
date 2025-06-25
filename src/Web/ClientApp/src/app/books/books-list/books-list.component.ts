@@ -1,6 +1,7 @@
 // src/app/books/books-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { Book, BookService } from 'src/app/web-api-client';
+import { Book } from 'src/app/models/book.model';
+import { BookService } from 'src/app/web-api-client';
 
 @Component({
   selector: 'app-books-list',

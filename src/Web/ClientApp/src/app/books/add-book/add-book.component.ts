@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BookService, AuthorService, Author } from 'src/app/web-api-client';
+import { BookService, AuthorService } from 'src/app/web-api-client';
 import { Router } from '@angular/router';
+import { Author } from 'src/app/models/author.model';
 
 @Component({
   selector: 'app-book-add',
