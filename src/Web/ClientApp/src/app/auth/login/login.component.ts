@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,17 +12,13 @@ export class LoginComponent {
     password: ['', Validators.required],
   });
 
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private router: Router
-  ) {}
+  constructor(private fb: FormBuilder, private auth: AuthService) {}
 
   login() {
-    const body = this.form.value;
-    this.http.post('/api/Login', body).subscribe({
+    const body = this.form.value as { email: string; password: string };
+    this.auth.login(body).subscribe({
       next: () =>
-        this.router.navigateByUrl(
+        location.assign(
           new URLSearchParams(location.search).get('ReturnUrl') ?? '/'
         ),
       error: () => alert('Invalid credentials'),

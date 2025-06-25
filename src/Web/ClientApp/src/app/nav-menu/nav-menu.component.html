@@ -11,15 +11,25 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isAuthenticated$ | async">
           <a class="nav-link" routerLink="/borrowers/new">Add Borrower</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isAuthenticated$ | async">
           <a class="nav-link" routerLink="/authors/new">Add Author</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isAuthenticated$ | async">
           <a class="nav-link" routerLink="/books/new">Add Book</a>
         </li>
+        <li class="nav-item" *ngIf="isAuthenticated$ | async; else loginLink">
+          <a class="nav-link" (click)="logout()" style="cursor: pointer"
+            >Logout</a
+          >
+        </li>
+        <ng-template #loginLink>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+        </ng-template>
       </ul>
     </div>
   </div>

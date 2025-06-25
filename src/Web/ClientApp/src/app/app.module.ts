@@ -30,6 +30,7 @@ import { BookAddComponent } from './books/add-book/add-book.component';
 import { AuthorAddComponent } from './authors/add-author/add-author.component';
 import { BorrowerAddComponent } from './borrowers/add-borrower/add-borrower.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -53,14 +54,47 @@ import { LoginComponent } from './auth/login/login.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'books', component: BooksListComponent },
-      { path: 'books/new', component: BookAddComponent },
-      { path: 'borrowers', component: BorrowersListComponent },
-      { path: 'authors', component: AuthorsListComponent },
-      { path: 'authors/new', component: AuthorAddComponent },
-      { path: 'borrow', component: BorrowBookComponent },
-      { path: 'borrowers/new', component: BorrowerAddComponent },
+      {
+        path: '',
+        component: HomeComponent,
+        pathMatch: 'full',
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'books',
+        component: BooksListComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'books/new',
+        component: BookAddComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'borrowers',
+        component: BorrowersListComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'authors',
+        component: AuthorsListComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'authors/new',
+        component: AuthorAddComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'borrow',
+        component: BorrowBookComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'borrowers/new',
+        component: BorrowerAddComponent,
+        canActivate: [AuthGuard],
+      },
       { path: 'login', component: LoginComponent },
     ]),
     BrowserAnimationsModule,
