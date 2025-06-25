@@ -17,7 +17,7 @@ namespace Infrastructure.Data
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .Build();
 
-            var conn = config.GetConnectionString("DefaultConnection");
+            var conn = config.GetConnectionString("MyProjectDb");
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseSqlServer(conn)
                 .Options;

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Application.Common.Models;
 using Application.Books.Commands.AddBook;
-using MediatR;
 using Microsoft.AspNetCore.Authorization; 
 using Application.Books.Commands.BorrowBook;
 using Application.Books.Commands.UpdateBook;
