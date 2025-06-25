@@ -1,7 +1,6 @@
 // src/app/borrowers/borrowers-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { Borrower } from 'src/app/models/borrower.model';
-import { BorrowerService } from 'src/app/api-client';
+import { BorrowerDto, BorrowersClient } from 'src/app/api-client';
 
 @Component({
   selector: 'app-borrowers-list',
@@ -9,11 +8,11 @@ import { BorrowerService } from 'src/app/api-client';
   styleUrls: ['./borrowers-list.component.scss'],
 })
 export class BorrowersListComponent implements OnInit {
-  borrowers: Borrower[] = [];
+  borrowers: BorrowerDto[] = [];
   loading = false;
   error: string | null = null;
 
-  constructor(private borrowerService: BorrowerService) {}
+  constructor(private borrowerService: BorrowersClient) {}
 
   ngOnInit(): void {
     this.fetchBorrowers();
@@ -23,7 +22,7 @@ export class BorrowersListComponent implements OnInit {
     this.loading = true;
     this.error = null;
 
-    this.borrowerService.getAll().subscribe({
+    this.borrowerService.getBorrowers().subscribe({
       next: (data) => {
         this.borrowers = data;
         this.loading = false;

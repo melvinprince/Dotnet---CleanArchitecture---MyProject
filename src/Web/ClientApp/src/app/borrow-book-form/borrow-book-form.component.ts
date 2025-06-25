@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BookService, BorrowerService } from 'src/app/api-client';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
-import { Book } from '../models/book.model';
-import { Borrower } from '../models/borrower.model';
+import {
+  BookDto,
+  BooksClient,
+  BorrowBookCommand,
+  BorrowerDto,
+  BorrowersClient,
+} from '../api-client';
 
 @Component({
   selector: 'app-borrow-book',
@@ -12,8 +16,8 @@ import { Borrower } from '../models/borrower.model';
   styleUrls: ['./borrow-book-form.component.scss'],
 })
 export class BorrowBookComponent implements OnInit {
-  books: Book[] = [];
-  borrowers: Borrower[] = [];
+  books: BookDto[] = [];
+  borrowers: BorrowerDto[] = [];
   loading = false;
   error: string | null = null;
   success = false;
@@ -25,8 +29,8 @@ export class BorrowBookComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private bookService: BookService,
-    private borrowerService: BorrowerService,
+    private bookService: BooksClient,
+    private borrowerService: BorrowersClient,
     private router: Router
   ) {}
 
@@ -34,8 +38,8 @@ export class BorrowBookComponent implements OnInit {
     this.loading = true;
     try {
       const [books, borrowers] = await Promise.all([
-        firstValueFrom(this.bookService.getAll()),
-        firstValueFrom(this.borrowerService.getAll()),
+        firstValueFrom(this.bookService.getBooks()),
+        firstValueFrom(this.borrowerService.getBorrowers()),
       ]);
 
       // ← use the string literal, not 0
@@ -55,8 +59,11 @@ export class BorrowBookComponent implements OnInit {
     this.error = null;
 
     const { bookId, borrowerId } = this.form.value;
+    const cmd = new BorrowBookCommand();
+    cmd.bookId = bookId!;
+    cmd.borrowerId = borrowerId!;
 
-    this.bookService.borrow(bookId!, borrowerId!).subscribe({
+    this.bookService.borrowBook(cmd).subscribe({
       next: () => {
         this.success = true;
         setTimeout(() => this.router.navigate(['/books']), 1000);

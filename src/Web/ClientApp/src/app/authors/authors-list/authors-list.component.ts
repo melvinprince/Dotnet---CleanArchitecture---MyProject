@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Author } from 'src/app/models/author.model';
-import { AuthorService } from 'src/app/api-client';
+import { AuthorDto, AuthorsClient } from 'src/app/api-client';
 
 @Component({
   selector: 'app-authors-list',
@@ -8,11 +7,11 @@ import { AuthorService } from 'src/app/api-client';
   styleUrls: ['./authors-list.component.scss'],
 })
 export class AuthorsListComponent implements OnInit {
-  authors: Author[] = [];
+  authors: AuthorDto[] = [];
   loading = false;
   error: string | null = null;
 
-  constructor(private authorService: AuthorService) {}
+  constructor(private authorService: AuthorsClient) {}
 
   ngOnInit(): void {
     this.fetchAuthors();
@@ -22,7 +21,7 @@ export class AuthorsListComponent implements OnInit {
     this.loading = true;
     this.error = null;
 
-    this.authorService.getAll().subscribe({
+    this.authorService.getAuthors().subscribe({
       next: (data) => {
         this.authors = data;
         this.loading = false;

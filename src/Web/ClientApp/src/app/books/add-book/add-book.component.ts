@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BookService, AuthorService } from 'src/app/api-client';
 import { Router } from '@angular/router';
-import { Author } from 'src/app/models/author.model';
+import {
+  AddBookCommand,
+  AuthorDto,
+  AuthorsClient,
+  BooksClient,
+} from 'src/app/api-client';
 
 @Component({
   selector: 'app-book-add',
@@ -10,7 +14,7 @@ import { Author } from 'src/app/models/author.model';
   styleUrls: ['./add-book.component.scss'],
 })
 export class BookAddComponent implements OnInit {
-  authors: Author[] = [];
+  authors: AuthorDto[] = [];
   loading = false;
   error: string | null = null;
   success = false;
@@ -24,14 +28,14 @@ export class BookAddComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authorService: AuthorService,
-    private bookService: BookService,
+    private authorService: AuthorsClient,
+    private bookService: BooksClient,
     private router: Router
   ) {}
 
   ngOnInit() {
     this.loading = true;
-    this.authorService.getAll().subscribe({
+    this.authorService.getAuthors().subscribe({
       next: (authors) => {
         this.authors = authors;
         this.loading = false;
@@ -53,7 +57,13 @@ export class BookAddComponent implements OnInit {
       authorId: this.form.value.authorId!,
       publishedDate: this.form.value.publishedDate!, // format: YYYY-MM-DD
     };
-    this.bookService.create(payload).subscribe({
+    const cmd = new AddBookCommand();
+    cmd.title = payload.title;
+    cmd.isbn = payload.isbn;
+    cmd.authorId = payload.authorId;
+    cmd.publishedDate = new Date(payload.publishedDate);
+
+    this.bookService.addBook(cmd).subscribe({
       next: (newId) => {
         this.success = true;
         // Optionally redirect back to list after 1s

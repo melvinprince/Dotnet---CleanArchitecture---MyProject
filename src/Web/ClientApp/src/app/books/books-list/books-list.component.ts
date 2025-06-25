@@ -1,7 +1,6 @@
 // src/app/books/books-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { Book } from 'src/app/models/book.model';
-import { BookService } from 'src/app/api-client';
+import { BookDto, BooksClient } from 'src/app/api-client';
 
 @Component({
   selector: 'app-books-list',
@@ -9,11 +8,11 @@ import { BookService } from 'src/app/api-client';
   styleUrls: ['./books-list.component.scss'],
 })
 export class BooksListComponent implements OnInit {
-  books: Book[] = [];
+  books: BookDto[] = [];
   loading = false;
   error: string | null = null;
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BooksClient) {}
 
   ngOnInit(): void {
     this.fetchBooks();
@@ -23,7 +22,7 @@ export class BooksListComponent implements OnInit {
     this.loading = true;
     this.error = null;
 
-    this.bookService.getAll().subscribe({
+    this.bookService.getBooks().subscribe({
       next: (data) => {
         this.books = data;
         this.loading = false;

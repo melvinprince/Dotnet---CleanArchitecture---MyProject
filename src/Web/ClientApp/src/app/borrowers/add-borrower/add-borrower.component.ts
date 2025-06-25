@@ -1,8 +1,8 @@
 // src/app/borrower-add/borrower-add.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BorrowerService } from 'src/app/api-client';
 import { Router } from '@angular/router';
+import { AddBorrowerCommand, BorrowersClient } from 'src/app/api-client';
 
 @Component({
   selector: 'app-borrower-add',
@@ -22,7 +22,7 @@ export class BorrowerAddComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private borrowerService: BorrowerService,
+    private borrowerService: BorrowersClient,
     private router: Router
   ) {}
 
@@ -34,13 +34,12 @@ export class BorrowerAddComponent implements OnInit {
     if (this.form.invalid) return;
 
     this.error = null;
-    const payload = {
-      fullName: this.form.value.fullName!,
-      email: this.form.value.email!,
-      phoneNumber: this.form.value.phoneNumber || undefined,
-    };
+    const cmd = new AddBorrowerCommand();
+    cmd.fullName = this.form.value.fullName!;
+    cmd.email = this.form.value.email!;
+    cmd.phoneNumber = this.form.value.phoneNumber;
 
-    this.borrowerService.create(payload).subscribe({
+    this.borrowerService.addBorrower(cmd).subscribe({
       next: (newId) => {
         this.success = true;
         setTimeout(() => this.router.navigate(['/borrowers']), 1000);

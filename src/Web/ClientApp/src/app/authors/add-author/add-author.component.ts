@@ -1,8 +1,8 @@
 // src/app/author-add/author-add.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthorService } from 'src/app/api-client';
 import { Router } from '@angular/router';
+import { AddAuthorCommand, AuthorsClient } from 'src/app/api-client';
 
 @Component({
   selector: 'app-author-add',
@@ -23,7 +23,7 @@ export class AuthorAddComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authorService: AuthorService,
+    private authorService: AuthorsClient,
     private router: Router
   ) {}
 
@@ -41,8 +41,13 @@ export class AuthorAddComponent implements OnInit {
       dateOfBirth: this.form.value.dateOfBirth || undefined,
       biography: this.form.value.biography || undefined,
     };
+    const cmd = new AddAuthorCommand();
+    cmd.firstName = payload.firstName;
+    cmd.lastName = payload.lastName;
+    cmd.dateOfBirth = new Date(payload.dateOfBirth!);
+    cmd.biography = payload.biography;
 
-    this.authorService.create(payload).subscribe({
+    this.authorService.addAuthor(cmd).subscribe({
       next: (newId) => {
         this.success = true;
         setTimeout(() => this.router.navigate(['/authors']), 1000);
