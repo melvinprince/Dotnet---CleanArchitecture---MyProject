@@ -1,7 +1,7 @@
 // src/app/author-add/author-add.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthorService } from 'src/app/web-api-client';
+import { AuthorService } from 'src/app/api-client';
 import { Router } from '@angular/router';
 
 @Component({

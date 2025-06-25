@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import {
-  BookService,
-  BorrowerService,
-} from 'src/app/web-api-client';
+import { BookService, BorrowerService } from 'src/app/api-client';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { Book } from '../models/book.model';

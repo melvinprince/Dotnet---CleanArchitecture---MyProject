@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BookService, AuthorService } from 'src/app/web-api-client';
+import { BookService, AuthorService } from 'src/app/api-client';
 import { Router } from '@angular/router';
 import { Author } from 'src/app/models/author.model';
 

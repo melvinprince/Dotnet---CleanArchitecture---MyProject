@@ -1,0 +1,121 @@
+import { Injectable, Inject, InjectionToken } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Book } from './models/book.model';
+import { Author } from './models/author.model';
+import { Borrower } from './models/borrower.model';
+
+/**
+ * Base URL injection token. In AppModule providers, bind to environment.apiBaseUrl
+ */
+export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
+
+/**
+ * Shared base service wrapping HttpClient and API base URL
+ */
+@Injectable({ providedIn: 'root' })
+export class ApiService {
+  constructor(
+    protected http: HttpClient,
+    @Inject(API_BASE_URL) protected baseUrl: string
+  ) {}
+}
+
+// --- Borrower Models & Service ---
+
+@Injectable({ providedIn: 'root' })
+export class BorrowerService extends ApiService {
+  getAll(): Observable<Borrower[]> {
+    return this.http.get<Borrower[]>(`${this.baseUrl}/Borrowers`);
+  }
+
+  getById(id: string): Observable<Borrower> {
+    return this.http.get<Borrower>(`${this.baseUrl}/Borrowers/${id}`);
+  }
+
+  create(payload: {
+    fullName: string;
+    email: string;
+    phoneNumber?: string;
+  }): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/Borrowers`, payload);
+  }
+
+  update(id: string, payload: Borrower): Observable<void> {
+    return this.http.put<void>(`${this.baseUrl}/Borrowers/${id}`, payload);
+  }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/Borrowers/${id}`);
+  }
+}
+
+// --- Author Models & Service ---
+
+@Injectable({ providedIn: 'root' })
+export class AuthorService extends ApiService {
+  getAll(): Observable<Author[]> {
+    return this.http.get<Author[]>(`${this.baseUrl}/Authors`);
+  }
+
+  getById(id: string): Observable<Author> {
+    return this.http.get<Author>(`${this.baseUrl}/Authors/${id}`);
+  }
+
+  create(payload: {
+    firstName: string;
+    lastName: string;
+    dateOfBirth?: string;
+    biography?: string;
+  }): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/Authors`, payload);
+  }
+
+  update(id: string, payload: Author): Observable<void> {
+    return this.http.put<void>(`${this.baseUrl}/Authors/${id}`, payload);
+  }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/Authors/${id}`);
+  }
+}
+
+// --- Book Models & Service ---
+
+@Injectable({ providedIn: 'root' })
+export class BookService extends ApiService {
+  getAll(): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.baseUrl}/Books`);
+  }
+
+  getById(id: string): Observable<Book> {
+    return this.http.get<Book>(`${this.baseUrl}/Books/${id}`);
+  }
+
+  create(payload: {
+    authorId: string;
+    title: string;
+    isbn: string;
+    publishedDate: string;
+  }): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/Books`, payload);
+  }
+
+  update(
+    id: string,
+    payload: Partial<Omit<Book, 'status' | 'borrowerId'>>
+  ): Observable<void> {
+    return this.http.put<void>(`${this.baseUrl}/Books/${id}`, payload);
+  }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/Books/${id}`);
+  }
+
+  borrow(bookId: string, borrowerId: string): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/Books/borrow`, {
+      bookId,
+      borrowerId,
+    });
+  }
+}

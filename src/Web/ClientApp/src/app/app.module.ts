@@ -12,7 +12,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // ← import your token and env
-import { API_BASE_URL } from './web-api-client';
+import { API_BASE_URL } from './api-client';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';

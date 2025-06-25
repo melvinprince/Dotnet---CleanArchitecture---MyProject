@@ -1,7 +1,7 @@
 // src/app/borrowers/borrowers-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Borrower } from 'src/app/models/borrower.model';
-import { BorrowerService } from 'src/app/web-api-client';
+import { BorrowerService } from 'src/app/api-client';
 
 @Component({
   selector: 'app-borrowers-list',
